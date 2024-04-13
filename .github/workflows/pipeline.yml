@@ -26,3 +26,5 @@ jobs:
       run: npm install
     - name: run the unit test
       run: npm run test:unit
+    -name: Display softuni username
+      run: echo "shtambe"
