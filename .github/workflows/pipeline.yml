@@ -28,3 +28,26 @@ jobs:
       run: npm run test:unit
     - name: Display softuni username
       run: echo "shtambe"
+
+
+
+  run_ui_test:
+    needs: build_test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    - name: install npm dependecies
+      run: npm install
+    - name: install playwright browsers
+      run: npx playwright install
+    - name: start app
+      run: npm run start & 
+    - name: Run the iu test
+      run: npm run test:ui
